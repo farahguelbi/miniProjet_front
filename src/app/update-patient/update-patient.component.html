@@ -1,0 +1,73 @@
+<div class="container">
+    <div>
+        <h2>Modifier les données de patients :</h2>
+    </div>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputnom">Nom de patient:</label>
+                <input type="text" class="form-control"  [(ngModel)]= "currentpatient.nom_depatient "   id="inputnom" placeholder="nom du patient" name="nom">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPrenom">Prénom de patient:</label>
+                <input type="text" class="form-control"  [(ngModel)]= " currentpatient.prenom_de_patient "  id="inputPrenom" placeholder="prénom du patient" name="prenom">
+            </div>
+        </div>
+        <div hidden class="form-group">
+            <label for="inputCIN">CIN de patient:</label>
+            <input  readonly type="text" class="form-control"[(ngModel)]= "currentpatient.CIN_de_patient"  name="cin"  id="inputCIN"  placeholder="veuillez entrer le CIN du patient">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Adresse:</label>
+            <input type="text" class="form-control"  [(ngModel)]= "currentpatient.adresse"  name="adresse" id="inputAddress" placeholder="veuillez entrer l'adresse">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputState">Gouvernorat:</label>
+                <select id="inputState" class="form-control"  [(ngModel)]="currentpatient.Gouvernorat" name="sel" >
+                    <option selected>...</option>
+                    <option>Ariana</option>
+                    <option>Béja</option>
+                    <option>Ben Arous</option>
+                    <option>Bizerte</option>
+                    <option>Gabès</option>
+                    <option>Gafsa</option>
+                    <option>Jendouba</option>
+                    <option>Kairouan</option>
+                    <option>Kasserine</option>
+                    <option>Kebili</option>
+                    <option>Kef</option>
+                    <option>Mahdia</option>
+                    <option>Manouba</option>
+                    <option>Médenine</option>
+                    <option>Monastir</option>
+                    <option>Nabeul</option>
+                    <option>Sfax</option>
+                    <option>Sidi Bouzid</option>
+                    <option>Siliana</option>
+                    <option>Sousse</option>
+                    <option>Tataouine</option>
+                    <option>Tozeur</option>
+                    <option>Tunis</option>
+                    <option>Zaghouan</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCity">Ville:</label>
+                <input type="text" class="form-control" [(ngModel)]= "currentpatient.ville"  name="ville"  id="inputCity">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="datedenaissance">Date de naissance:</label>
+                <input type="date" name="date de naissance" class="form-control" [(ngModel)]= "currentpatient.dateDeNaissance"   id="datedenaissance" name="date1">
+            </div>
+           
+            <div class="form-group col-md-6">
+                <label for="datederdv">Date de Rendez-vous:</label>
+                <input type="date" name="date de Rendez-vous" class="form-control"  [(ngModel)]= "currentpatient.dateDeRendez_vous"  id="datederdv" name="date2">
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success" (click)="updatePatient()">Modifier</button>
+        </div>
+    </form>
+</div>
