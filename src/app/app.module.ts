@@ -13,7 +13,8 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
     AppComponent,
     PatientComponent,
     AddPatientComponent,
-    UpdatePatientComponent
+    UpdatePatientComponent,
+    
   ],
   imports: [
     

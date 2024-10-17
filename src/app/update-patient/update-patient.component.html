@@ -22,36 +22,7 @@
             <input type="text" class="form-control"  [(ngModel)]= "currentpatient.adresse"  name="adresse" id="inputAddress" placeholder="veuillez entrer l'adresse">
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="inputState">Gouvernorat:</label>
-                <select id="inputState" class="form-control"  [(ngModel)]="currentpatient.Gouvernorat" name="sel" >
-                    <option selected>...</option>
-                    <option>Ariana</option>
-                    <option>Béja</option>
-                    <option>Ben Arous</option>
-                    <option>Bizerte</option>
-                    <option>Gabès</option>
-                    <option>Gafsa</option>
-                    <option>Jendouba</option>
-                    <option>Kairouan</option>
-                    <option>Kasserine</option>
-                    <option>Kebili</option>
-                    <option>Kef</option>
-                    <option>Mahdia</option>
-                    <option>Manouba</option>
-                    <option>Médenine</option>
-                    <option>Monastir</option>
-                    <option>Nabeul</option>
-                    <option>Sfax</option>
-                    <option>Sidi Bouzid</option>
-                    <option>Siliana</option>
-                    <option>Sousse</option>
-                    <option>Tataouine</option>
-                    <option>Tozeur</option>
-                    <option>Tunis</option>
-                    <option>Zaghouan</option>
-                </select>
-            </div>
+           
             <div class="form-group col-md-4">
                 <label for="inputCity">Ville:</label>
                 <input type="text" class="form-control" [(ngModel)]= "currentpatient.ville"  name="ville"  id="inputCity">
@@ -66,6 +37,14 @@
                 <input type="date" name="date de Rendez-vous" class="form-control"  [(ngModel)]= "currentpatient.dateDeRendez_vous"  id="datederdv" name="date2">
             </div>
         </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <select class="form-control form-control-lg" id="idgenre" name="idgenre"
+            [(ngModel)]="updategenre_id">
+            <option *ngFor="let Genres of genres_medicaux" [value]="Genres.id_genres_medicaux" >
+            {{Genres.nom_de_categorie}}
+            </option>
+            </select>
+            </div>
         <div>
             <button type="submit" class="btn btn-success" (click)="updatePatient()">Modifier</button>
         </div>
