@@ -7,6 +7,9 @@ import { PatientComponent } from './patient/patient.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { FormsModule } from '@angular/forms';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
+import { RechercheParGenreMedicauxComponent } from './recherche-par-genre-medicaux/recherche-par-genre-medicaux.component';
+import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +17,9 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
     PatientComponent,
     AddPatientComponent,
     UpdatePatientComponent,
+    RechercheParGenreMedicauxComponent,
+    RechercheParNomComponent,
+    SearchFilterPipe,
     
   ],
   imports: [

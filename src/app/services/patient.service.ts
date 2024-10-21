@@ -8,9 +8,9 @@ import { genre } from '../model/genre.model';
 })
 export class PatientService {
   patients!: patient[]; // 'patients' should be an array
-
   patient! : patient;
 genres_medicaux:genre[];
+patientsRecherche!:patient[];
   constructor( private activatedRoute :ActivatedRoute,
     private router: Router,
   ) {
@@ -45,22 +45,23 @@ genres_medicaux:genre[];
           CIN_de_patient: 12345667,
           nom_depatient: "Guelbi",
           prenom_de_patient: "FARAH",
-          adresse: "Rue Taieb Mhiri Korba 8070",
+          adresse: "avenue hbib bourghiba  Korba 8070",
           dateDeRendez_vous: new Date("01/14/2024"),
           dateDeNaissance: new Date("01/14/2004"),
-          genre_medicaux: {id_genres_medicaux: 3, nom_de_categorie:"Gériatrie"},
+          genre_medicaux: {id_genres_medicaux: 6, nom_de_categorie:"uregences"},
           ville: "Korba",
         },
       {
         CIN_de_patient: 12347765,
         nom_depatient: "Bani",
         prenom_de_patient: "amira",
-        adresse: "Avenue Mohamed V Nabeul 8000",
+        adresse: "Avenue Hédi Nouira 8000",
         dateDeRendez_vous: new Date("01/14/2024"),
         dateDeNaissance: new Date("01/14/1999"),
         ville: 'Tunis',
 
-        genre_medicaux: {id_genres_medicaux: 1, nom_de_categorie:"Pédiatrie"}
+        genre_medicaux: {id_genres_medicaux: 8, nom_de_categorie: "Maladies chroniques	"},
+
       },
       {
         CIN_de_patient: 12343556,
@@ -83,6 +84,17 @@ genres_medicaux:genre[];
    consulterGenreMedicaux(id:number):genre{
     return this.genres_medicaux.find(genres=>genres.id_genres_medicaux==id)!;
    }
+   rechercherParGenreMedicaux(idGenre: number): patient[]{
+    this.patientsRecherche = [];
+    this.patients.forEach((cur, index) => {
+    if(idGenre == cur.genre_medicaux.id_genres_medicaux) {
+    console.log("cur "+cur);
+    this.patientsRecherche.push(cur);
+    }
+    });
+    return this.patientsRecherche;
+    } 
+
    listePatient():patient[]{
     return this.patients;
    }
