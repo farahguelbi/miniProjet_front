@@ -3,6 +3,8 @@ import { patient } from '../model/patient.model';
 import { PatientService } from '../services/patient.service';
 import { genre } from '../model/genre.model';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { user } from '../model/user.model';
 
 @Component({
   selector: 'app-add-patient',
@@ -15,12 +17,19 @@ export class AddPatientComponent implements OnInit {
   genres_medicaux! : genre[];
   newid_genres_medicaux!: number;
     newgenre!:genre;
+    myForm!:FormGroup;
+    public user =new user()
  constructor( private patientService :PatientService,
-  private router:Router){}
+  private router:Router,
+  private formBuilder:FormBuilder,
+){}
   
  
   ngOnInit(): void {
     this.genres_medicaux= this.patientService.listeGenreMedicaux();
+    this.myForm =this.formBuilder.group({
+      email :['',[Validators.required,Validators.email]]
+    });
       
   }
   addPatient(){

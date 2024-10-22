@@ -15,13 +15,13 @@ export class RechercheParNomComponent implements OnInit {
 
   constructor(private patientService:PatientService){}
 ngOnInit(): void {  
-   this.allPatients=this.patientService.listePatient() ;
-   this.patients=this.allPatients
+   this.patients=this.patientService.listePatient() ;
+   this.allPatients=this.patients;
    
   }    
   
   onKeyUp(filterText : string){
     this.patients = this.allPatients.filter(item =>
-    item.nom_depatient.toLowerCase().includes(filterText));
+    item.nom_depatient.toLowerCase().includes(filterText.toLowerCase()));
     }
 }    

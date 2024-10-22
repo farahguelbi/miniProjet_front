@@ -2,7 +2,7 @@
     <div>
         <h2>Modifier les données de patients :</h2>
     </div>
-    <form>
+    <form >
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputnom">Nom de patient:</label>
@@ -17,6 +17,15 @@
             <label for="inputCIN">CIN de patient:</label>
             <input  readonly type="text" class="form-control"[(ngModel)]= "currentpatient.CIN_de_patient"  name="cin"  id="inputCIN"  placeholder="veuillez entrer le CIN du patient">
         </div>
+        <form [formGroup]="myForm">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email" [(ngModel)]="user.email">
+        </div>
+            <span *ngIf="myForm.controls['email'].hasError('required')&& myForm.controls['email'].touched" class="text-danger">l'email est obligatoire</span>
+            <span *ngIf="myForm.controls['email'].hasError('email')&&  myForm.controls['email'].touched" class="text-danger">l'email non valide</span>
+
+        </form>
         <div class="form-group">
             <label for="inputAddress">Adresse:</label>
             <input type="text" class="form-control"  [(ngModel)]= "currentpatient.adresse"  name="adresse" id="inputAddress" placeholder="veuillez entrer l'adresse">
@@ -38,6 +47,7 @@
             </div>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>genre_medicaux:</label>
             <select class="form-control form-control-lg" id="idgenre" name="idgenre"
             [(ngModel)]="updategenre_id">
             <option *ngFor="let Genres of genres_medicaux" [value]="Genres.id_genres_medicaux" >
@@ -45,6 +55,8 @@
             </option>
             </select>
             </div>
+            <br>
+            <br>
         <div>
             <button type="submit" class="btn btn-success" (click)="updatePatient()">Modifier</button>
         </div>

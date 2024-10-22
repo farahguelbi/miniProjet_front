@@ -17,6 +17,16 @@
             <label for="inputCIN">CIN de patient:</label>
             <input type="text" class="form-control"[(ngModel)]= "newPatient.CIN_de_patient"  name="cin"  id="inputCIN"  placeholder="veuillez entrer le CIN du patient">
         </div>
+        <form [formGroup]="myForm">
+
+     <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email" [(ngModel)]="user.email">
+        </div>
+            <span *ngIf="myForm.controls['email'].hasError('required')&& myForm.controls['email'].touched" class="text-danger">l'email est obligatoire</span>
+            <span *ngIf="myForm.controls['email'].hasError('email')&&  myForm.controls['email'].touched" class="text-danger">l'email non valide</span>
+
+        </form>
         <div class="form-group">
             <label for="inputAddress">Adresse:</label>
             <input type="text" class="form-control"  [(ngModel)]= "newPatient.adresse"  name="adresse" id="inputAddress" placeholder="veuillez entrer l'adresse">
@@ -35,17 +45,18 @@
                 <label for="datederdv">Date de Rendez-vous:</label>
                 <input type="date" name="date de Rendez-vous" class="form-control"  [(ngModel)]= "newPatient.dateDeRendez_vous"  id="datederdv" name="date2">
             </div>
+            
         </div>
         <br>
         <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>Genres Medicaux:</label>
-            <select class="form-control form-control-lg" id="idgenre" name="idgenre" [(ngModel)]= " newid_genres_medicaux">
-             <option *ngFor="let Genres of genres_medicaux" [value]="Genres.id_genres_medicaux" >
-             {{Genres.nom_de_categorie}}
-            </option>
-            </select>
-            </div>
-            <br>
+        <label>Genres Medicaux:</label>
+        <select class="form-control form-control-lg" id="idgenre" name="idgenre" [(ngModel)]= " newid_genres_medicaux">
+         <option *ngFor="let Genres of genres_medicaux" [value]="Genres.id_genres_medicaux" >
+         {{Genres.nom_de_categorie}}
+        </option>
+        </select>
+        </div>
+        <br>
         <div>
             <button type="submit" class="btn btn-primary" (click)="addPatient()">Ajouter</button>
         </div>

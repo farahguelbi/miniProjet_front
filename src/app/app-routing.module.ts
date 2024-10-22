@@ -5,6 +5,7 @@ import { AddPatientComponent } from './add-patient/add-patient.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
 import { RechercheParGenreMedicauxComponent } from './recherche-par-genre-medicaux/recherche-par-genre-medicaux.component';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path: "patient", component : PatientComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: "updatePatient/:cin",component:UpdatePatientComponent},
   {path: "rechercheParGenreMedicaux", component : RechercheParGenreMedicauxComponent},
   {path:"rechercheParNom",component:RechercheParNomComponent},
+  {path:"register",component:RegisterComponent},
   {path: "", redirectTo: "patient", pathMatch: "full" }
 
 
