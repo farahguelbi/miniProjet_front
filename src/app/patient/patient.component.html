@@ -1,33 +1,34 @@
 <div class="container">
-    <div class="card shadow mb-4">
-    <div class="card-body">
-    <table class="table table-striped">
-    <tr>
-                        <th>CIN de patient</th>
-                        <th>Nom de patient</th>
-                        <th>Prenom de patient</th>
-                        <th>l'adresse de patient</th>
-                        <th>l'email</th>
-                        <th>Date de naissance</th>
-                        <th>Date de Rendez-vous</th> 
-                        <th>genres_medicaux:</th>
-         </tr>
-    <tbody *ngFor="let patient of patients">
-    <tr >
-            <td>{{patient.CIN_de_patient}}</td>
-            <td>{{patient.nom_depatient}}</td>
-            <td>{{patient.prenom_de_patient}}</td>
-
-            <td>{{patient.adresse}}</td>
-            <td>{{patient.dateDeNaissance | date:'dd/MM/yyyy'}}</td>
-            <td>{{patient.dateDeRendez_vous | date:'dd/MM/yyyy'}}</td>
-            <td>{{patient.genre_medicaux.nom_de_categorie}}</td>
-            <td><a class="btn btn-danger" (click)="supprimerPatient(patient)">Supprimer</a></td>
-            <td><a class="btn btn-success" [routerLink]="['/updatePatient',patient.CIN_de_patient]">Modifier</a></td>
-
-    </tr>
-    </tbody>
-    </table>
-    </div>
-    </div>
+  <div class="card shadow mb-4">
+      <div class="card-body">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>id de patient</th>
+                      <th>Nom de patient</th>
+                      <th>Prenom de patient</th>
+                      <th>Adresse de patient</th>
+                      <th>Date de Rendez-vous</th> 
+                     <th>Genres médicaux</th>
+                      <th>Actions</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let patient of patients">
+                      <td>{{patient.idPatient}}</td>
+                      <td>{{patient.nomPatient}}</td>
+                      <td>{{patient.prenomPatient}}</td>
+                      <td>{{patient.adresse}}</td>
+                      <td>{{patient.dateRendezvous | date:'dd/MM/yyyy'}}</td>
+                   <td>{{patient.genre?.nomGenre}}</td>
+                      <td>
+                          <a *ngIf="AuthService.isAdmin()" class="btn btn-danger" (click)="supprimerPatient(patient)">Supprimer</a></td>
+                         <td><a *ngIf="AuthService.isAdmin()" class="btn btn-success" [routerLink]="['/updatePatient', patient.idPatient]">Modifier</a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
 </div>

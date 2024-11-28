@@ -5,13 +5,13 @@
         <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
         </div>
         </form>-->
-    <form class="form-inline">
+   <form class="form-inline">
         <div class="form-group mx-sm-3 mb-2 mt-2 ">
         <label>Nom Patient en tapant</label>
         <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
         </div>
         </form>
-    <!--<form class="form-inline">
+  <!--  <form class="form-inline">
         <div class="form-group mx-sm-3 mb-2 mt-2 ">
         <label>Nom Patient</label>
         <input type="text" class="form-control" [(ngModel)]="nomPatient" name="nomPatient" class="form-control">
@@ -22,24 +22,24 @@
     <div class="card-body">
     <table class="table table-striped">
     <tr>
-                        <th>CIN de patient</th>
+                        <th>id de patient</th>
                         <th>Nom de patient</th>
                         <th>Prenom de patient</th>
                         <th>l'adresse de patient</th>
 
-                        <th>Date de naissance</th>
+                       <!-- <th>Date de naissance</th>-->
                         <th>Date de Rendez-vous</th> 
                         <th>genres_medicaux:</th>
          </tr>
     <tbody *ngFor="let patient of patients">
     <tr >
-            <td>{{patient.CIN_de_patient}}</td>
-            <td>{{patient.nom_depatient}}</td>
-            <td>{{patient.prenom_de_patient}}</td>
+            <td>{{patient.idPatient}}</td>
+            <td>{{patient.nomPatient}}</td>
+            <td>{{patient.prenomPatient}}</td>
             <td>{{patient.adresse}}</td>
-            <td>{{patient.dateDeNaissance | date:'dd/MM/yyyy'}}</td>
-            <td>{{patient.dateDeRendez_vous | date:'dd/MM/yyyy'}}</td>
-            <td>{{patient.genre_medicaux.nom_de_categorie}}</td>
+           <!-- <td>{{patient.dateDeNaissance | date:'dd/MM/yyyy'}}</td>-->
+            <td>{{patient.dateRendezvous | date:'dd/MM/yyyy'}}</td>
+            <td>{{patient.genre.nomGenre}}</td>
           <!--  <td><a class="btn btn-danger" (click)="supprimerPatient(patient)">Supprimer</a></td>
             <td><a class="btn btn-success" [routerLink]="['/updatePatient',patient.CIN_de_patient]">Modifier</a></td>
     -->

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="currentpatient">
     <div>
         <h2>Modifier les données de patients :</h2>
     </div>
@@ -6,52 +6,58 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputnom">Nom de patient:</label>
-                <input type="text" class="form-control"  [(ngModel)]= "currentpatient.nom_depatient "   id="inputnom" placeholder="nom du patient" name="nom">
-            </div>
+                <input type="text" class="form-control"  [(ngModel)]= "currentpatient.nomPatient "   id="inputnom" placeholder="nom du patient" name="nomPatient" >
+            </div> 
+         
             <div class="form-group col-md-6">
                 <label for="inputPrenom">Prénom de patient:</label>
-                <input type="text" class="form-control"  [(ngModel)]= " currentpatient.prenom_de_patient "  id="inputPrenom" placeholder="prénom du patient" name="prenom">
+                <input type="text" class="form-control"  [(ngModel)]= "currentpatient.prenomPatient"  id="inputPrenom" placeholder="prénom du patient" name="prenomPatient">
             </div>
+           
         </div>
         <div hidden class="form-group">
-            <label for="inputCIN">CIN de patient:</label>
-            <input  readonly type="text" class="form-control"[(ngModel)]= "currentpatient.CIN_de_patient"  name="cin"  id="inputCIN"  placeholder="veuillez entrer le CIN du patient">
+            <label for="inputid">id de patient:</label>
+            <input  readonly type="text" class="form-control"[(ngModel)]= "currentpatient.idPatient"  name="idPatient"  id="inputid"  placeholder="veuillez entrer l'ID du patient">
         </div>
-        <form [formGroup]="myForm">
-        <div class="form-group">
+       <!--  <form [formGroup]="myForm">
+           
+       <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email" [(ngModel)]="user.email">
         </div>
             <span *ngIf="myForm.controls['email'].hasError('required')&& myForm.controls['email'].touched" class="text-danger">l'email est obligatoire</span>
             <span *ngIf="myForm.controls['email'].hasError('email')&&  myForm.controls['email'].touched" class="text-danger">l'email non valide</span>
 
-        </form>
-        <div class="form-group">
+        </form>-->
+       <div class="form-group">
             <label for="inputAddress">Adresse:</label>
-            <input type="text" class="form-control"  [(ngModel)]= "currentpatient.adresse"  name="adresse" id="inputAddress" placeholder="veuillez entrer l'adresse">
+            <input type="text" class="form-control"  [(ngModel)]= "currentpatient.adresse"  name="adresse" id="inputAddress" placeholder="veuillez entrer l'adresse" >
         </div>
+
         <div class="form-row">
-           
+           <!--
             <div class="form-group col-md-4">
                 <label for="inputCity">Ville:</label>
-                <input type="text" class="form-control" [(ngModel)]= "currentpatient.ville"  name="ville"  id="inputCity">
+                <input type="text" class="form-control" [(ngModel)]= "currentpatient.ville"  name="ville"  id="inputCity" formControlName="ville">
             </div>
-            <div class="form-group col-md-6">
+            <span *ngIf="myForm.controls['ville'].hasError('required') && myForm.controls['ville'].touched" class="text-danger">La ville est obligatoire</span>
+        --> <!--
+           <div class="form-group col-md-6">
                 <label for="datedenaissance">Date de naissance:</label>
                 <input type="date" name="date de naissance" class="form-control" [(ngModel)]= "currentpatient.dateDeNaissance"   id="datedenaissance" name="date1">
             </div>
-           
+        -->
             <div class="form-group col-md-6">
                 <label for="datederdv">Date de Rendez-vous:</label>
-                <input type="date" name="date de Rendez-vous" class="form-control"  [(ngModel)]= "currentpatient.dateDeRendez_vous"  id="datederdv" name="date2">
+                <input type="date" name="datedeRendez-vous" class="form-control"  [(ngModel)]= "currentpatient.dateRendezvous"  id="datederdv" >
             </div>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>genre_medicaux:</label>
-            <select class="form-control form-control-lg" id="idgenre" name="idgenre"
-            [(ngModel)]="updategenre_id">
-            <option *ngFor="let Genres of genres_medicaux" [value]="Genres.id_genres_medicaux" >
-            {{Genres.nom_de_categorie}}
+            <select class="form-control form-control-lg" id="idgenre" name="idGenre"
+            [(ngModel)]="updategenre_id"  >
+            <option *ngFor="let genre of genres_medicaux" [value]="genre.idGenre" >
+            {{genre.nomGenre}}
             </option>
             </select>
             </div>
@@ -62,3 +68,4 @@
         </div>
     </form>
 </div>
+

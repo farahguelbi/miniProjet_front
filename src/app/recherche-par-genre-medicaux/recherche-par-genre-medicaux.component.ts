@@ -16,11 +16,16 @@ genres_medicaux!:genre[];
 supprimerPatient: any;
 constructor( private patientService:PatientService){}
 ngOnInit(): void {
-  this.genres_medicaux=this.patientService.listeGenreMedicaux();
-    this.patients= [];
+  //this.genres_medicaux=this.patientService.listeGenreMedicaux();
+    //this.patients= [];
+    this.patientService.listeGenres().subscribe(gen=>{
+      this.genres_medicaux=gen._embedded.genres;
+      console.log(gen);
+    })
 }
 onChange(){
-  console.log(this.idGenre);
-  this.patients=this.patientService.rechercherParGenreMedicaux(this.idGenre);
+  //console.log(this.idGenre);
+  this.patientService.rechercherParGenre(this.idGenre).subscribe(pats =>{this.patients=pats});
+
 }
 }

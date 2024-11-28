@@ -16,6 +16,7 @@ export class UpdatePatientComponent implements OnInit{
   genres_medicaux!:genre[];
   updategenre_id!:number;
   confirmPassword?:string;
+  id_genres_medicaux!:number;
   myForm!:FormGroup;
   public user =new user()
   constructor(private activatedRoute :ActivatedRoute,
@@ -24,22 +25,41 @@ export class UpdatePatientComponent implements OnInit{
     private patientService:PatientService){}
   
   ngOnInit(){
-    this.genres_medicaux=this.patientService.listeGenreMedicaux();
+    this.patientService.listeGenres().subscribe(genre=>{this.genres_medicaux=genre._embedded.genres;
+      console.log(genre);
+    });
+    this.patientService.consulterPatient(this.activatedRoute.snapshot.params['id']).subscribe(pats=>{
+      this.currentpatient=pats;
+     this.currentpatient.genre.idGenre=this.currentpatient.genre?.idGenre!;
+    });
+
+   /*this.genres_medicaux=this.patientService.listeGenreMedicaux();
     // console.log(this.route.snapshot.params.id);
   this.currentpatient=this.patientService.consulterPatient(this.activatedRoute.snapshot.params['cin']);
   this.updategenre_id=this.currentpatient.genre_medicaux.id_genres_medicaux;
   //console.log(this.currentpatient);
   this.myForm =this.formBuilder.group({
-    email :['',[Validators.required,Validators.email]]
-  });
+    nom: ['', [Validators.required, Validators.minLength(3)]],
+      prenom: ['', [Validators.required, Validators.minLength(3)]],
+      cin: ['', [Validators.required, Validators.pattern('^[0-9]{8}$')]],
+      adresse: ['', Validators.required],
+      ville: ['', Validators.required],
+      dateDeRendezVous: ['', Validators.required],
+      genreMedecin: ['', Validators.required]
+      //email :['',[Validators.required,Validators.email]]*/
+    //});
+
  
  
   }
   updatePatient()
 { //console.log(this.currentProduit);
-  this.currentpatient.genre_medicaux=this.patientService.consulterGenreMedicaux(this.updategenre_id)
-this.patientService.updatepatient(this.currentpatient);
-this.router.navigate (['patient']);
+  this.currentpatient.genre=this.genres_medicaux.find(gen=>gen.idGenre==this.updategenre_id)!;
+  this.patientService.updatePatient(this.currentpatient).subscribe(pats =>{
+    this.router.navigate (['patient']); })
+
+
+
 
 }
 OnRegister(){

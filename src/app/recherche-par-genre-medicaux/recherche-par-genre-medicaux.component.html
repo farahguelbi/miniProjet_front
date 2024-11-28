@@ -1,11 +1,11 @@
 <div class="container">
     <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
         <label>Genre Medicaux </label>
-        <select class="form-control form-control-lg" id="idCat" name="idCat"
+        <select class="form-control form-control-lg" id="idGenre" name="idGenre"
         [(ngModel)]="idGenre" (change)=" onChange()">
         
-        <option *ngFor="let genre of genres_medicaux" value="{{genre.id_genres_medicaux}}">
-        {{genre.nom_de_categorie}}
+        <option *ngFor="let genre of genres_medicaux" value="{{genre.idGenre}}">
+        {{genre.nomGenre}}
         </option>
         </select>
         </div>
@@ -14,26 +14,26 @@
     <div class="card-body">
     <table class="table table-striped">
     <tr>
-                        <th>CIN de patient</th>
+                        <th>id de patient</th>
                         <th>Nom de patient</th>
                         <th>Prenom de patient</th>
                         <th>l'adresse de patient</th>
 
-                        <th>Date de naissance</th>
+                      <!--  <th>Date de naissance</th>-->
                         <th>Date de Rendez-vous</th> 
                         <th>genres_medicaux:</th>
          </tr>
     <tbody *ngFor="let patient of patients">
     <tr >
-            <td>{{patient.CIN_de_patient}}</td>
-            <td>{{patient.nom_depatient}}</td>
-            <td>{{patient.prenom_de_patient}}</td>
+            <td>{{patient.idPatient}}</td>
+            <td>{{patient.nomPatient}}</td>
+            <td>{{patient.prenomPatient}}</td>
             <td>{{patient.adresse}}</td>
-            <td>{{patient.dateDeNaissance | date:'dd/MM/yyyy'}}</td>
-            <td>{{patient.dateDeRendez_vous | date:'dd/MM/yyyy'}}</td>
-            <td>{{patient.genre_medicaux.nom_de_categorie}}</td>
+           <!-- <td>{{patient.dateDeNaissance | date:'dd/MM/yyyy'}}</td>-->
+            <td>{{patient.dateRendezvous | date:'dd/MM/yyyy'}}</td>
+            <td>{{patient.genre.nomGenre}}</td>
             <td><a class="btn btn-danger" (click)="supprimerPatient(patient)">Supprimer</a></td>
-            <td><a class="btn btn-success" [routerLink]="['/updatePatient',patient.CIN_de_patient]">Modifier</a></td>
+            <td><a class="btn btn-success" [routerLink]="['/updatePatient',patient.idPatient]">Modifier</a></td>
 
     </tr>
     </tbody>
